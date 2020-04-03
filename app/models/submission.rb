@@ -17,6 +17,7 @@ class Submission < ApplicationRecord
                                 reject_if:     ->(f) { f[:submission_file_s3_key].blank? },
                                 allow_destroy: true
   has_many :votes, as: :votable
+  has_many :migration_mappings, class_name: 'MigrationMapping', as: :source
 
   as_enum :grading_status,
           [:ready, :submitted, :initiated, :graded, :failed], map: :string
