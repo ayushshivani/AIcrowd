@@ -53,4 +53,12 @@ class Team < ApplicationRecord
   def organized_by?(participant)
     participant && team_participants_organizer.exists?(participant_id: participant.id)
   end
+
+  def organizer
+    team_participants_organizer.first.participant
+  end
+
+  def challenge_submissions(challenge)
+    Submission.participant_challenge_submissions(challenge.id, participant_ids)
+  end
 end

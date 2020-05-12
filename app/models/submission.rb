@@ -26,6 +26,9 @@ class Submission < ApplicationRecord
 
   delegate :name, :email, to: :participant, allow_nil: true
 
+  scope :group_creation_count, -> { group_by_day(:created_at).count }
+  scope :participant_challenge_submissions, ->(challenge_id, p_ids) { where(challenge_id: challenge_id, participant_id: p_ids) }
+
   after_create do
     if challenge_round_id.blank?
       rnd = challenge

@@ -1,5 +1,6 @@
 <%= render partial: 'shared/challenges/masthead', locals: { challenge: @challenge, challenge_rounds: @challenge_rounds, vote: @vote, follow: @follow } %>
 <%= render partial: 'challenges/show/subnav', locals: { challenge: @challenge } %>
+<%= render partial: 'winners', locals: { leaderboards: @leaderboards.first(3), current_round: @current_round }  %>
 
 <section class="section-p-sm">
   <div class="container-fluid">
@@ -72,6 +73,8 @@
                   <% end %>
                   <th scope="col">Entries</th>
                   <th scope="col" class="text-right">Last Submission</th>
+                  <th scope="col" class="text-center">Submission Trend</th>
+                  <th scope="col" class="text-right"></th>
                   <th scope="col" class="text-right"></th>
                 <% end %>
               </tr>

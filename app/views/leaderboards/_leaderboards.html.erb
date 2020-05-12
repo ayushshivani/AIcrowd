@@ -78,19 +78,30 @@
       <% leaderboard_other_scores_array(leaderboard, challenge).each do |other_score| %>
         <td><strong><%= other_score %></strong></td>
       <% end %>
-
       <% if !leaderboard.baseline? %>
         <td><%= leaderboard.entries %></td>
         <td class="text-right"><%= local_time(leaderboard.created_at, "%a, %e %b %Y %H:%M") %></td>
       <% else %>
         <td colspan="2"></td>
       <% end %>
+      <td><%= leaderboard.entries %></td>
+      <td class="text-right"><%= local_time(leaderboard.created_at, "%a, %e %b %Y %H:%M") %></td>
+      <td style="float: right;">
+        <% unless @challenge.challenge == "NeurIPS 2019 : Disentanglement Challenge" %>
+          <% submitter = leaderboard.submitter %>
+          <% if submitter.present? %>
+            <%= render partial: 'leaderboards/participant_submission_graph', locals: { submitter: submitter, challenge: challenge, width: '200px', id: submitter.id + 3 } %>
+          <% end %>
+        <% end %>
+      </td>
       <td class="text-right">
         <% if leaderboard.try(:submitter_type) != 'OldParticipant' && leaderboard.try(:submitter).present? && leaderboard.try(:submission_id).present? %>
           <%= link_to 'View', challenge_submission_path(challenge, leaderboard.submission_id), class: 'btn btn-secondary btn-sm' %>
         <% else %>
           <%= link_to 'View', '#', class: 'btn btn-secondary btn-sm disabled disabled--with-pointer-events', title: 'Submitter or Submission was deleted' %>
         <% end %>
+      </td>
+      <td>
         <% submission = leaderboard.try(:submission) %>
         <% if submission.present? && submission&.submission_link.present? %>
           <%= link_to image_tag('/assets/img/code_snippet.svg'), leaderboard&.submission&.submission_link, title: 'View Code', target: "_blank" %>

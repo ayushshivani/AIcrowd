@@ -1,0 +1,41 @@
+<div class="section-pt-sm-pb-md">
+  <div class="container-fluid">
+    <div class="row" id="challenges-div">
+      <% leaderboards.each_with_index do |leaderboard, indx| %>
+        <% unless @challenge.challenge == "NeurIPS 2019 : Disentanglement Challenge" %>
+          <%
+            participants = leaderboard_participants(leaderboard)
+            submitter    = leaderboard.submitter
+          %>
+          <% if submitter.present? %>
+            <div class="col-md-4">
+              <div class="card card-winners">
+                <div class="card-body">
+                  <div class="card-intro" style="margin-bottom:10px">
+                    <div>
+                      <%= image_tag(rank_wise_trophy_image(indx), class: "winners-trophy") %>
+                    </div>
+                    <center>
+                      <% if leaderboard.submitter_type == 'Participant' %>
+                        <%= participant_avatar submitter, "winners-avatar" %><br>
+                        <%= link_to submitter.name, participant_path(submitter) %>
+                      <% else %>
+                        <%= participant_avatar submitter.organizer, "winners-avatar" %><br>
+                        <%= link_to submitter.name, challenge_team_path(@challenge, submitter) %>
+                      <% end %>
+                      <br><br>
+                      <%= leaderboard.score %>
+                      <div class="leaderboard-graph">
+                        <%= render partial: 'leaderboards/participant_submission_graph', locals: { submitter: submitter, challenge: @challenge, width: '270px', id: indx } %>
+                      </div>
+                    </center>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
