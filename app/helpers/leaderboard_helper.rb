@@ -65,8 +65,8 @@ module LeaderboardHelper
     return other_scores
   end
 
-  def rank_wise_trophy_image(indx)
-    case indx
+  def rank_wise_trophy_image(index)
+    case index
     when 0
       '/assets/img/award-gold.svg'
     when 1
