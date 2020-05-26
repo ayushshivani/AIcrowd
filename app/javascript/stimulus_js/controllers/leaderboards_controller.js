@@ -9,11 +9,10 @@ export default class extends Controller {
     let url = window.location.origin + window.location.pathname
 
     let params = ''
-    let country = this.participantCountryTarget.selectedOptions[0].innerText
-    let countryPresent = country !== '' && country !== 'select-country'
-
-    let affiliation = this.participantAffiliationTarget.selectedOptions[0].innerText
-    let affiliationPresent = affiliation !== '' && affiliation !== 'select-affiliation'
+    let country = this.participantCountryTarget.selectedOptions[0].value
+    let countryPresent = country !== ''
+    let affiliation = this.participantAffiliationTarget.selectedOptions[0].value
+    let affiliationPresent = affiliation !== ''
 
     if(affiliationPresent){
       if(countryPresent){

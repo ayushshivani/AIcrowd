@@ -133,7 +133,7 @@ class Participant < ApplicationRecord
   end
 
   def self.country_cd(country_name)
-    return if !country_name.present? || country_name == 'select-country'
+    return if !country_name.present?
     ISO3166::Country.find_country_by_name(country_name).alpha2
   end
 

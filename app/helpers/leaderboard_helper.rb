@@ -65,11 +65,11 @@ module LeaderboardHelper
     return other_scores
   end
 
-  def selected_country?(country)
+  def is_selected_country?(country)
     params[:country_name] == country
   end
 
-  def selected_affiliation?(affiliation)
+  def is_selected_affiliation?(affiliation)
     params[:affiliation] == affiliation
   end
 end

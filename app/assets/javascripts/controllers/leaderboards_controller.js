@@ -85,7 +85,7 @@ $(document).ready(function() {
     if(!country_name.trim())
     {
       $('#participant-affiliation').find('option').remove().end();
-      $('#participant-affiliation').append($("<option></option>").attr("value",'').text('--select-affiliation--'));
+      $('#participant-affiliation').append($("<option></option>").attr("value",'').text('All affiliations'));
     }
     challenge_id = $(this).data('challenge-id');
     challenge_round_id = $('#challenge_round_id').val();

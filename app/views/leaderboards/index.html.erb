@@ -34,13 +34,10 @@
               <p>Leaderboard is only visible to organizers</p>
             </div>
           <% end %>
-          <!-- leaderboard-filters -->
-          <% if participant_signed_in? %>
-            <%= render 'filter_leaderboards' %>
-          <% end %>
-          <!-- leaderboard-filters -->
 
-          <br/>
+          <!-- leaderboard-filters -->
+          <%= render 'filter_leaderboards' %>
+          <!-- leaderboard-filters -->
 
           <div class="table-responsive-md">
             <table class="table table-leaderboard">

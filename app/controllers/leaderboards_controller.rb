@@ -22,11 +22,8 @@ class LeaderboardsController < ApplicationController
     @follow           = @challenge.follows.find_by(participant_id: current_participant.id) if current_participant.present?
     @challenge_rounds = @challenge.challenge_rounds.started
     @post_challenge   = post_challenge?
-
-    if participant_signed_in?
-      @countries = @filter.call('participant_countries')
-      @affiliations = @filter.call('participant_affiliations')
-    end
+    @countries = @filter.call('participant_countries')
+    @affiliations = @filter.call('participant_affiliations')
   end
 
   def export

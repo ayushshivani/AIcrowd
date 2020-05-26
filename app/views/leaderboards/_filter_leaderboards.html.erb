@@ -11,22 +11,18 @@
 
     <div class="form-group">
       <select class="form-control" name="country_name" data-target='leaderboards.participantCountry' data-challenge-id="<%= @challenge.friendly_id %>" id="participant-country">
-        <option  value="" selected="selected"><%= params[:country_name].present? ? params[:country_name] : 'select-country' %></option>
+        <option  value="" >All countries</option>
         <% @countries&.each do |country| %>
-          <% unless selected_country?(country) %>
-            <option value="<%= country %>"><%= country %></option>
-          <% end %>
+          <option value="<%= country %>" <%= is_selected_country?(country) ? selected = 'selected' : '' %>><%= country %></option>
         <% end %>
       </select>
     </div>
 
     <div class="form-group">
       <select class="form-control" name="affiliation" data-target="leaderboards.participantAffiliation" id="participant-affiliation">
-        <option  value="" selected="selected"><%= params[:affiliation].present? ? params[:affiliation] : 'select-affiliation' %></option>
+        <option  value="">All affiliations</option>
         <% @affiliations&.each do |affiliation| %>
-          <% unless selected_affiliation?(affiliation) %>
-            <option value="<%= affiliation %>"><%= affiliation %></option>
-          <% end %>
+          <option value="<%= affiliation %>" <%= is_selected_affiliation?(affiliation) ? selected = 'selected' : '' %>><%= affiliation %></option>
         <% end %>
       </select>
     </div>
