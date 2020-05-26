@@ -78,3 +78,23 @@ Paloma.controller('Leaderboards', {
     pauseAndPlay();
   }
 });
+
+$(document).ready(function() {
+  $('#participant-country').change(function() {
+    country_name = $('option:selected',this).val();
+    if(!country_name.trim())
+    {
+      $('#participant-affiliation').find('option').remove().end();
+      $('#participant-affiliation').append($("<option></option>").attr("value",'').text('--select-affiliation--'));
+    }
+    challenge_id = $(this).data('challenge-id');
+    challenge_round_id = $('#challenge_round_id').val();
+    $.ajax({
+      url: "/challenges/" + challenge_id + "/leaderboards/get_affiliation.js",
+      data: {
+        country_name: country_name,
+        challenge_round_id: challenge_round_id
+      }
+    });
+  });
+});
