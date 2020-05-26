@@ -31,7 +31,7 @@
       </select>
     </div>
     <button type="submit" class="btn btn-secondary" data-action='click->leaderboards#filterURL'>Filter</button>
-    <%= link_to 'Clear Filter', challenge_leaderboards_path, class: 'btn btn-sm apply-filter-btn none-underline' %>
+    <%= link_to 'Clear Filter', challenge_leaderboards_path(@challenge), class: 'btn btn-sm apply-filter-btn none-underline' %>
   <% end %>
 
   <!-- toggle switch -->
@@ -43,6 +43,15 @@
           <span class="switcher mr-2"></span>
           <span class="label">Show post-challenge submissions</span>
         <% end %>
+      </label>
+    </div>
+  <% end %>
+  <% if @challenge.meta_challenge %>
+    <div class="mb-2" id="geek-view-toogle" style="width: fit-content;">
+      <label class="toggle-switch" data-toggle="tooltip" data-placement="top" title="Geek view show scores">
+        <input type="checkbox">
+        <span class="switcher"></span>
+        <span class="label">🤓 Geek View</span>
       </label>
     </div>
   <% end %>
