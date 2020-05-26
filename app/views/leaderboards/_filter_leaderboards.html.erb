@@ -13,7 +13,9 @@
       <select class="form-control" name="country_name" data-target='leaderboards.participantCountry' data-challenge-id="<%= @challenge.friendly_id %>" id="participant-country">
         <option  value="" selected="selected"><%= params[:country_name].present? ? params[:country_name] : 'select-country' %></option>
         <% @countries&.each do |country| %>
-          <option value="<%= country %>"><%= country %></option>
+          <% unless selected_country?(country) %>
+            <option value="<%= country %>"><%= country %></option>
+          <% end %>
         <% end %>
       </select>
     </div>
@@ -22,7 +24,9 @@
       <select class="form-control" name="affiliation" data-target="leaderboards.participantAffiliation" id="participant-affiliation">
         <option  value="" selected="selected"><%= params[:affiliation].present? ? params[:affiliation] : 'select-affiliation' %></option>
         <% @affiliations&.each do |affiliation| %>
-          <option value="<%= affiliation %>"><%= affiliation %></option>
+          <% unless selected_affiliation?(affiliation) %>
+            <option value="<%= affiliation %>"><%= affiliation %></option>
+          <% end %>
         <% end %>
       </select>
     </div>
