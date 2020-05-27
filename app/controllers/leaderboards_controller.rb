@@ -1,5 +1,5 @@
 class LeaderboardsController < ApplicationController
-  before_action :authenticate_participant!, except: :index
+  before_action :authenticate_participant!, except: [:index, :get_affiliation]
   before_action :set_challenge, only: [:index, :export, :get_affiliation]
   before_action :set_current_round, only: [:index, :export, :get_affiliation]
   before_action :set_leaderboards, only: [:index, :get_affiliation]

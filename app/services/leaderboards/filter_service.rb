@@ -82,7 +82,7 @@ module Leaderboards
       if @params[:action] == 'get_affiliation'
         participant_country_leaderboards.pluck(:submitter_id)
       else
-        @leaderboards.joins(:participant).pluck(:submitter_id)
+        @leaderboards.where(submitter_type: 'Participant').pluck(:submitter_id)
       end
     end
 
@@ -90,7 +90,7 @@ module Leaderboards
       team_ids =  if @params[:action] == 'get_affiliation'
                     team_country_leaderboards.pluck(:submitter_id)
                   else
-                    @leaderboards.joins(:team).pluck(:submitter_id)
+                    @leaderboards.where(submitter_type: 'Team').pluck(:submitter_id)
                   end
       TeamParticipant.where(team_id: team_ids).pluck(:participant_id)
     end
