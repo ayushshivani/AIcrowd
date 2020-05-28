@@ -6,7 +6,7 @@
 
 <div class="leaderboard-filters collapse <%= params[:country_name].present? || params[:affiliation].present? || params[:post_challenge].present? ? 'show' : '' %>" id="leaderboardFilters">
   <%= form_with url: challenge_leaderboards_path(challenge_id: @challenge.friendly_id), method: :get, local: true, data: { controller: 'leaderboards' } do %>
-    <input type='hidden' name='challenge_round_id' id='challenge_round_id' value=<%= @current_round.id %>>
+    <input type='hidden' name='challenge_round_id' id='challenge_round_id' value=<%= @current_round&.id %>>
     <input type='hidden' name='post_challenge' id='post_challenge' value=<%= @post_challenge %>>
 
     <div class="form-group">
