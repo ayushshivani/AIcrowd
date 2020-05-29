@@ -56,7 +56,7 @@ class LeaderboardsController < ApplicationController
 
     if !params.has_key?('meta_challenge_id')
       cp = ChallengeProblems.find_by(problem_id: @challenge.id)
-      if cp.present?
+      if cp.present? && params[:action] != 'get_affiliation'
         params[:meta_challenge_id] = Challenge.find(cp.challenge_id).slug
         redirect_to helpers.challenge_leaderboards_path(@challenge)
       end

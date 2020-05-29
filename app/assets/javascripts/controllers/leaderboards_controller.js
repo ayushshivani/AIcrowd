@@ -88,13 +88,24 @@ $(document).ready(function() {
       $('#participant-affiliation').append($("<option></option>").attr("value",'').text('All affiliations'));
     }
     challenge_id = $(this).data('challenge-id');
+    meta_challenge_id = $('#leaderboards-div').data('meta-challenge-id');
     challenge_round_id = $('#challenge_round_id').val();
+    post_challenge = $('#post_challenge').val();
+
+    var data = {
+      'country_name': country_name,
+      'challenge_round_id': challenge_round_id,
+      'post_challenge': post_challenge
+    }
+
+    if(meta_challenge_id !== '')
+    {
+      data['meta_challenge_id'] = meta_challenge_id
+    }
+
     $.ajax({
       url: "/challenges/" + challenge_id + "/leaderboards/get_affiliation.js",
-      data: {
-        country_name: country_name,
-        challenge_round_id: challenge_round_id
-      }
+      data: data
     });
   });
 });
