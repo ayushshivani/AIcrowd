@@ -84,8 +84,6 @@
       <% else %>
         <td colspan="2"></td>
       <% end %>
-      <td><%= leaderboard.entries %></td>
-      <td class="text-right"><%= local_time(leaderboard.created_at, "%a, %e %b %Y %H:%M") %></td>
       <td class="pull-right">
         <% unless @challenge.challenge == "NeurIPS 2019 : Disentanglement Challenge" %>
           <% submitter = leaderboard.submitter %>

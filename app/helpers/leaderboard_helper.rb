@@ -65,14 +65,14 @@ module LeaderboardHelper
     return other_scores
   end
 
-  def rank_wise_trophy_image(index)
+  def rank_wise_trophy(index)
     case index
     when 0
-      '/assets/img/award-gold.svg'
+      'gold'
     when 1
-      '/assets/img/award-silver.svg'
+      'silver'
     when 2
-      '/assets/img/award-bronze.svg'
+      'bronze'
     end
   end
 end

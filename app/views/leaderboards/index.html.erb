@@ -1,8 +1,8 @@
 <%= render partial: 'shared/challenges/masthead', locals: { challenge: @challenge, challenge_rounds: @challenge_rounds, vote: @vote, follow: @follow } %>
 <%= render partial: 'challenges/show/subnav', locals: { challenge: @challenge } %>
-<%= render partial: 'winners', locals: { leaderboards: @leaderboards.first(3), current_round: @current_round }  %>
 
 <section class="section-p-sm">
+  <%= render partial: 'winners', locals: { leaderboards: @leaderboards.first(3), current_round: @current_round }  %>
   <div class="container-fluid">
     <div class="row">
       <div class="col-12">
