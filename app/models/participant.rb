@@ -376,4 +376,8 @@ class Participant < ApplicationRecord
   def challenge_submissions(challenge)
     Submission.participant_challenge_submissions(challenge.id, id)
   end
+
+  def meta_challenge_submissions(challenge)
+    Submission.participant_meta_challenge_submissions(challenge.id, id)
+  end
 end

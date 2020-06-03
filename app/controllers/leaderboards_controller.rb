@@ -36,6 +36,7 @@ class LeaderboardsController < ApplicationController
         .per(10)
         .order(:seq)
     end
+    @top_three_winners = @leaderboards.unscope(:order).top_three_winners
   end
 
   def export

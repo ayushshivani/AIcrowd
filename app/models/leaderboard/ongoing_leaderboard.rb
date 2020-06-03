@@ -6,4 +6,5 @@ class OngoingLeaderboard < SqlView
   belongs_to :challenge
 
   default_scope { order(seq: :asc) }
+  scope :top_three_winners, -> { order(score: :desc).first(3) }
 end

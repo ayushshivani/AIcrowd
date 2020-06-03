@@ -2,7 +2,7 @@
 <%= render partial: 'challenges/show/subnav', locals: { challenge: @challenge } %>
 
 <section class="section-p-sm">
-  <%= render partial: 'winners', locals: { leaderboards: @leaderboards.first(3), current_round: @current_round }  %>
+  <%= render partial: 'winners', locals: { leaderboards: @top_three_winners, current_round: @current_round }  %>
   <div class="container-fluid">
     <div class="row">
       <div class="col-12">
@@ -60,6 +60,7 @@
                     <th scope="col"><%= @current_round.get_score_secondary_title %></th>
                   <% end %>
                 <% end %>
+                <th scope="col" class="text-center">Submission Trend</th>
                 <% if @challenge.meta_challenge %>
                   <% @challenge.challenge_problems.each do |challenge_problem| %>
                     <th scope="col">
@@ -73,7 +74,6 @@
                   <% end %>
                   <th scope="col">Entries</th>
                   <th scope="col" class="text-right">Last Submission</th>
-                  <th scope="col" class="text-center">Submission Trend</th>
                   <th scope="col" class="text-right"></th>
                   <th scope="col" class="text-right"></th>
                 <% end %>

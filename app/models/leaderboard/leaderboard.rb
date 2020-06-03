@@ -8,4 +8,5 @@ class Leaderboard < SqlView
   belongs_to :submission
 
   default_scope { order(seq: :asc) }
+  scope :top_three_winners, -> { order(score: :desc).first(3) }
 end
