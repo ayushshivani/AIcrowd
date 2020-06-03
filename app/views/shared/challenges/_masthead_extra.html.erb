@@ -5,7 +5,7 @@
         <%= link_to organizer_path(organizer) do %>
           <%= image_tag organizer.image_file_url %>
         <% end %>
-        <span>By&nbsp;
+        <span><%= challenge.organizers.first == organizer ? 'By' : '&' %>&nbsp;
           <%= link_to organizer_path(organizer) do %>
             <%= organizer.organizer %>&nbsp;
           <% end %>
